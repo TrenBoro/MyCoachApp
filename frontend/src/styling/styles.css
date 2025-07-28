@@ -1,0 +1,569 @@
+body {
+  background: linear-gradient(135deg, #1e1e2f 0%, #23234d 100%);
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+body a {
+  text-decoration: none;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 60px;
+  background: #181828;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.profile-header {
+  margin-left: 1.5rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.profile-header a {
+    color: #fff;
+    cursor: default;
+}
+
+.nav-links {
+  margin-left: auto;
+  margin-right: 2rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: #fff;
+  font-weight: 500;
+  font-family: inherit;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.profile-header a:hover {
+  color: #ffd700;
+}
+
+.login-form-container,
+.register-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 60px);
+  margin-top: 60px;
+}
+
+.login-form,
+.register-form {
+  background: #23234d;
+  padding: 2rem 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(30,30,47,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 320px;
+}
+
+.login-form h2,
+.register-form h2 {
+  margin-bottom: 1.5rem;
+  color: #ffd700;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.login-form input,
+.register-form input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #181828;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+}
+
+.login-form input:focus
+.register-form input:focus {
+  background: #22224a;
+}
+
+.login-form button,
+.register-form button {
+  width: 100%;
+  padding: 0.75rem;
+  background: #ffd700;
+  color: #23234d;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.login-form button:hover,
+.register-form button:hover {
+  background: #fff;
+  color: #181828;
+}
+
+.login-form .register-link,
+.register-form .login-link {
+  color: #ffd700;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  transition: color 0.2s;
+}
+
+.login-form .register-link:hover,
+.register-form .login-link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.home-page,
+.profile-page,
+.workout-details-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: calc(100vh - 60px);
+  margin-top: 60px;
+}
+
+.welcome-container {
+  background: rgba(35,35,77,0.95);
+  margin-top: 3rem;
+  padding: 1.5rem 2rem 2rem 2rem;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(30,30,47,0.15);
+  max-width: 480px;
+  text-align: center;
+}
+
+.welcome-container h1 {
+  padding-top: 0px;
+  font-size: 2.2rem;
+  color: #ffd700;
+  font-weight: 800;
+}
+
+.workout-details-page h2,
+.profile-page h1 {
+  margin: 30px 0 1.2rem 0;
+  font-size: 2.2rem;
+  color: #ffd700;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.brand {
+  color: #fff;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.description {
+  font-size: 1.1rem;
+  color: #e0e0e0;
+  margin-bottom: 2rem;
+  margin-top: 0.5rem;
+}
+
+.home-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.home-links a {
+  background: #181828;
+  color: #ffd700;
+  padding: 0.75rem 1.2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 8px rgba(30,30,47,0.07);
+}
+
+.home-links a:hover {
+  background: #ffd700;
+  color: #23234d;
+}
+
+.todo-note {
+  margin-top: 1.2rem;
+  font-size: 0.98rem;
+  color: #b0b0b0;
+  background: #23234d;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+}
+
+.create-workout-page {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  gap: 20px;
+}
+
+.create-workout-h2 {
+  color: #ffd700;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.create-workout-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.add-exercise-button,
+.finish-workout-button {
+    background: #181828;
+    color: #ffd700;
+    padding: 0.75rem 1.2rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+}
+
+.create-workout-panels {
+  display: flex;
+  gap: 10px;
+}
+
+.delete-panel-button {
+  background: #181828;
+  border: none;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0.8rem 0.5rem;
+}
+
+.add-exercise-button:hover,
+.finish-workout-button:hover,
+.delete-panel-button:hover,
+.create-workout-list select:hover,
+.workout-card:hover {
+    background: #353576;
+}
+
+.create-workout-section {
+  display: inherit;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  max-width: 420px;
+}
+
+.create-workout-title,
+.filter-exercise {
+    background: #181828;
+    color: #ffd700;
+    padding: 0.75rem 1.2rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+}
+
+.my-workouts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  justify-content: flex-start;
+}
+
+.workout-card,
+.exercise-list-ex,
+.exercise-name {
+  background: #181828;
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem;
+  min-width: 220px;
+  max-width: 260px;
+  font-size: 1.1rem;
+  color: #ffd700;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: default;
+  flex-direction: column;
+}
+
+.workout-card span {
+  color: #635400;
+  font-size: smaller;
+  margin-top: 10px;
+}
+
+.workout-card-exercises {
+  list-style-type: none;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  gap: 5px;
+}
+
+.workout-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  background: rgba(35,35,77,0.95);
+  padding: 1.5rem 2rem 2rem 2rem;
+  border-radius: 18px;
+  max-width: 480px;
+  text-align: center;
+}
+
+.workout-details-exercise {
+  background: #181828;
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem;
+  min-width: 220px;
+  max-width: 260px;
+  font-size: 1.1rem;
+  color: #ffd700;
+  font-weight: 500;
+  cursor: default;
+}
+
+.exercise-list-ex:hover {
+  background: #353576;
+}
+
+.exercises-list-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
+}
+
+.filter-exercise {
+  margin-bottom: 10px;
+}
+
+.exercise-list-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border: none;
+  border-radius: 10px;
+  max-width: 480px;
+  width: 300px;
+}
+
+.add-exercise-form {
+  background: #23234d;
+  padding: 2rem 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(30,30,47,0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 320px;
+  max-width: 400px;
+  margin: 60px auto 0 auto;
+  gap: 1.2rem;
+}
+
+.add-exercise-form h3 {
+  color: #ffd700;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.add-exercise-form input,
+.add-exercise-form select {
+  width: 100%;
+  padding: 0.75rem 1.2rem;
+  border-radius: 8px;
+  background: #181828;
+  color: #ffd700;
+  font-size: 1.05rem;
+  border: none;
+  margin-bottom: 0.5rem;
+  font-family: inherit;
+  outline: none;
+}
+
+.add-exercise-form input:focus,
+.add-exercise-form select:focus {
+  background: #22224a;
+}
+
+.add-exercise-form label {
+  color: #ffd700;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.2rem;
+  align-self: flex-start;
+}
+
+.add-exercise-form button[type="submit"] {
+  width: 100%;
+  padding: 0.75rem;
+  background: #ffd700;
+  color: #23234d;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.add-exercise-form button[type="submit"]:hover {
+  background: #fff;
+  color: #181828;
+}
+
+.exercise-workout-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  gap: 40px;
+}
+
+.exercise-workout-input-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  gap: 40px;
+  padding-left: 15px;
+  margin-top: 0.5rem;
+}
+
+.back-button {
+  color: #ffd700;
+  background: #181828;
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: default;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.back-button:hover {
+  background: #353576;
+}
+
+.sets-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background: #181828;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.sets-table th,
+.sets-table td {
+  padding: 12px;
+  text-align: center;
+  color: #ffd700;
+  font-size: 1rem;
+}
+
+.set-number,
+.input-weight,
+.input-reps,
+.input-distance,
+.input-duration {
+  background: #181828;
+}
+
+.sets-table th {
+  background-color: #181828;
+}
+
+.sets-table td input {
+  width: 60px;
+  height: 42px;
+  border-radius: 8px;
+  background: #23234d;
+  color: #ffd700;
+  border: none;
+  font-size: 1rem;
+  text-align: center;
+  outline: none;
+  cursor: default;
+}
+
+.sets-table td input:hover,
+.delete-set-button:hover {
+  background: #353576;
+}
+
+.delete-set-button {
+  background-color: #181828;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 0.5rem;
+}
+
+.add-set-button {
+  background: #1c1c29;
+  color: #ffd700;
+  padding: 0.2rem 1.2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  width: 100%;
+}
+
+.add-set-button:hover {
+  background: #3e3e5c;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide spinner for Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
