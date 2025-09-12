@@ -1,4 +1,4 @@
-#!/home/borisstev/my_coach/env/bin/python
+#!/home/boro/MyCoachApp/env/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
