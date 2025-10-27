@@ -6,7 +6,7 @@ export async function refreshToken() {
     const response = await fetch("http://localhost:8000/exercises/api/token/refresh/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ refToken })
+        body: JSON.stringify({ refresh: refToken })
     });
     const data = await response.json();
     

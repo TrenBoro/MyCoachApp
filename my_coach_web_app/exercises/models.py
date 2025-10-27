@@ -84,7 +84,7 @@ class ExerciseType(models.Model):
 class Exercise(models.Model):
     name = models.CharField(max_length=50, blank=False, null=False, unique=True)
     exercise_type = models.ForeignKey(ExerciseType, on_delete=models.CASCADE, related_name="type_exercise", blank=False, null=False)
-    equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE, related_name='equipment_exercise', blank=False, null=False)
+    equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE, related_name='equipment_exercises', blank=False, null=False)
     main_muscle_group = models.ForeignKey(Muscle, on_delete=models.CASCADE, related_name='main_exercises', blank=False, null=False)
     primary_muscles = models.ManyToManyField(Muscle, related_name='primary_exercises', blank=False)
     secondary_muscles = models.ManyToManyField(Muscle, related_name='secondary_exercises', blank=False)
@@ -92,29 +92,32 @@ class Exercise(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='custom_exercises')
 
     def __str__(self):
-        return f"{self.name}"
+        return self.name
 
 class WorkoutDay(models.Model):
     name_of_day = models.CharField(max_length=50, null=False, blank=False)
     exercises = models.ManyToManyField(Exercise, related_name='workout_days')
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="workout_days")
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering =['-created_at']
 
     def __str__(self):
-        return f"{self.name_of_day}"
+        return self.name_of_day
 
 class ExerciseLog(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    workout_day = models.ForeignKey(WorkoutDay, on_delete=models.CASCADE)
-    exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="exercise_logs")
+    workout_day = models.ForeignKey(WorkoutDay, on_delete=models.CASCADE, related_name="exercise_logs", null=False, blank=False)
+    exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE, related_name="logs")
     notes = models.TextField(blank=True, null=True)
     date = models.DateField(auto_now_add=True)
 
     class Meta:
         ordering = ['-id']
+    
+    def __str__(self):
+        return f"{self.user.username}: DAY: {self.workout_day.name_of_day} EXERCISE: {self.exercise.name} - {self.date}"
 
 class SetLog(models.Model):
     exercise_log = models.ForeignKey(ExerciseLog, on_delete=models.CASCADE, related_name='sets')
@@ -126,8 +129,14 @@ class SetLog(models.Model):
 
     class Meta:
         ordering = ['exercise_log', 'set_num']
+    
+    def __str__(self):
+        return f"LOG: {self.exercise_log} : {self.set_num} x {self.num_reps} - {self.weight} - {self.duration} - {self.distance}"
 
 class WorkoutHistorySnapshot(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    workouts = models.ForeignKey(ExerciseLog, on_delete=models.CASCADE, related_name='workout_histories')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='workout_history')
+    workouts = models.ForeignKey(ExerciseLog, on_delete=models.CASCADE, related_name='workout_history')
     date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.username}: {self.workouts} - {self.date}"
