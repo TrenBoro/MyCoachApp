@@ -3,8 +3,6 @@ from datetime import timedelta
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
-
 class Muscle(models.Model):
     MAIN_CHOICES = [
         ('CORE', 'Core'),
@@ -132,11 +130,3 @@ class SetLog(models.Model):
     
     def __str__(self):
         return f"LOG: {self.exercise_log} : {self.set_num} x {self.num_reps} - {self.weight} - {self.duration} - {self.distance}"
-
-class WorkoutHistorySnapshot(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='workout_history')
-    workouts = models.ForeignKey(ExerciseLog, on_delete=models.CASCADE, related_name='workout_history')
-    date = models.DateField(auto_now_add=True)
-
-    def __str__(self):
-        return f"{self.user.username}: {self.workouts} - {self.date}"
